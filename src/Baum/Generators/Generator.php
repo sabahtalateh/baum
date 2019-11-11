@@ -3,6 +3,7 @@
 namespace Baum\Generators;
 
 use Illuminate\Filesystem\Filesystem;
+use Illuminate\Support\Str;
 
 abstract class Generator
 {
@@ -16,7 +17,7 @@ abstract class Generator
   /**
    * Create a new MigrationGenerator instance.
    *
-   * @param \Illuminate\Filesystem\Filesysmte $files
+   * @param \Illuminate\Filesystem\Filesystem $files
    *
    * @return void
    */
@@ -90,7 +91,7 @@ abstract class Generator
    */
   protected function classify($input)
   {
-      return studly_case(str_singular($input));
+      return Str::studly(Str::singular($input));
   }
 
   /**
@@ -102,6 +103,6 @@ abstract class Generator
    */
   protected function tableize($input)
   {
-      return snake_case(str_plural($input));
+      return Str::snake(Str::plural($input));
   }
 }
